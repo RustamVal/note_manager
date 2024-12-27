@@ -7,9 +7,14 @@ status = input("Укажите статус заметки (новая, выпо
 created_date = input("Укажите дату создания заметки в формате dd-mm-yyyy: ")
 issue_date = input("Укажите плановую дату создания заметки в формате dd-mm-yyyy: ")
 
-title_lst = [title1, title2, title3]
+titles = [title1, title2, title3]
 
-note = [username, content, status, created_date, issue_date, title_lst]
+note = [username, content, status, created_date, issue_date, titles]
 
-#print(username,title1,title2,title3,content,status,created_date,issue_date)
-print(note)
+print("\nВывод данных по заметке \n",note,"\n")
+print("Имя пользователя: ", note[0])
+print("Заголовки заметки: ", note[5])
+print("Описание заметки: ", note[1])
+print("Статус заметки: ", note[2])
+print("Дата создания заметки: ", note[3])
+print("Дедлайн заметки : ", note[4])
