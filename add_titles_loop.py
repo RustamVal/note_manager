@@ -2,7 +2,7 @@ titles = []
 i = 1
 title = ""
 while True:
-    title = input(f"Введите {i} заголовок: ")
+    title = input(f"Введите {i} заголовок (или оставьте пустым для завершения): ")
     if title != "":
         titles.append(title)
     else:
