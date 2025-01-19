@@ -27,7 +27,8 @@ def print_note(l_note):
 
 # удаление в цикле всех заметок имеющих аналогичные имя пользователя или заголовок
 def delete_note(name_or_title, in_notes):
-    for l_note in in_notes:
+    for i in range(len(in_notes)-1,-1,-1):
+        l_note = in_notes[i]
         if l_note["name"].lower() == name_or_title or l_note["titles"].lower() == name_or_title:
             in_notes.remove(l_note)
     #return in_notes
