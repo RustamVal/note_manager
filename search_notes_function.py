@@ -6,7 +6,7 @@ def is_str_in_field(in_str, field):
         return False
 # Функция для форматированного вывода на печать
 
-def print_note (in_note, in_note_num=1):
+def print_note (in_note, in_note_num):
     if in_note_num == 1:
         print("Найдены заметки:")
     print("Заметка №", in_note_num, ": ")
@@ -14,6 +14,7 @@ def print_note (in_note, in_note_num=1):
     print("Заголовок: ", in_note["title"])
     print("Описание: ", in_note["content"])
     print("Статус: ", in_note["status"])
+    print()
 
 # Функция поиска в заметках по ключевому полю или статусу
 def search_notes(in_notes, keyword=None, status=None):
@@ -22,6 +23,7 @@ def search_notes(in_notes, keyword=None, status=None):
         return
     rec_num = 0 # счетчик найденных записей
     for l_note in in_notes:
+        result = False
         try:
             flag_keyword = (is_str_in_field(keyword, l_note["title"])) or (is_str_in_field(keyword,l_note["username"]))  or (is_str_in_field(keyword,l_note["content"]))
         except:
@@ -39,24 +41,24 @@ def search_notes(in_notes, keyword=None, status=None):
     if rec_num == 0:
         print("Заметок удовлетворяющих условиям поиска не найдено")
 
-notes = [
-    {'username': 'Алексей', 'title': 'Список покупок', 'content': 'Купить продукты на неделю', 'status': 'новая', 'created_date': '27-11-2024', 'issue_date': '30-11-2024'},
-    {'username': 'Мария', 'title': 'Учеба', 'content': 'Подготовиться к экзамену', 'status': 'в процессе', 'created_date': '25-11-2024', 'issue_date': '01-12-2024'},
-    {'username': 'Иван', 'title': 'План работы', 'content': 'Завершить проект', 'status': 'выполнено', 'created_date': '20-11-2024', 'issue_date': '26-11-2024'}
-]
-print("Тестирование")
-
-# первый блок тестирования
-print("Поиск по ключевому слову: Ввод:")
-print("search_notes(notes, keyword='покупок')")
-search_notes(notes,"покупок")
-print("")
-# второй блок тестирования
-print("Поиск по статусу: Ввод:")
-print("search_notes(notes, status='в процессе')")
-search_notes(notes, status='в процессе')
-print("")
-# третий блок тестирования
-print("Поиск по ключевому слову и статусу: Ввод")
-print("search_notes(notes, keyword='работы', status='выполнено')")
-search_notes(notes, keyword='работы', status='выполнено')
+if __name__ == '__main__':
+    notes = [
+        {'username': 'Алексей', 'title': 'Список покупок', 'content': 'Купить продукты на неделю', 'status': 'новая', 'created_date': '27-11-2024', 'issue_date': '30-11-2024'},
+        {'username': 'Мария', 'title': 'Учеба', 'content': 'Подготовиться к экзамену', 'status': 'в процессе', 'created_date': '25-11-2024', 'issue_date': '01-12-2024'},
+        {'username': 'Иван', 'title': 'План работы', 'content': 'Завершить проект', 'status': 'выполнено', 'created_date': '20-11-2024', 'issue_date': '26-11-2024'}
+    ]
+    print("Тестирование")
+    # первый блок тестирования
+    print("Поиск по ключевому слову: Ввод:")
+    print("search_notes(notes, keyword='покупок')")
+    search_notes(notes,"покупок")
+    print("")
+    # второй блок тестирования
+    print("Поиск по статусу: Ввод:")
+    print("search_notes(notes, status='в процессе')")
+    search_notes(notes, status='в процессе')
+    print("")
+    # третий блок тестирования
+    print("Поиск по ключевому слову и статусу: Ввод")
+    print("search_notes(notes, keyword='работы', status='выполнено')")
+    search_notes(notes, keyword='работы', status='выполнено')
