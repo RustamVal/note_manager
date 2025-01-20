@@ -43,7 +43,7 @@ def create_note():
     flag_correct_input = False
     while not flag_correct_input:
         title = input("Введите заголовок заметки: ")
-        flag_correct_input = is_str_correct(title,"Заголовок заметки")
+        flag_correct_input = is_str_correct(title, "Заголовок заметки")
 
     # блок проверки правильности ввода описания заметки
     flag_correct_input = False
@@ -67,9 +67,12 @@ def create_note():
         if correct_date is not None:
             flag_correct_input = True
 
-    return {"username":username, "title":title, "content":content, "status":status, "create_date":create_date, "issue_date":correct_date}
+    return {"username": username, "title": title, "content": content, "status": status, "create_date": create_date,
+            "issue_date": correct_date}
 
-# создаем словарь со статусами
 statuses = {"1":"новая","2":"в процессе","3":"выполнено"}
-new_note = create_note()
-print(new_note)
+if __name__ == '__main__':
+    # создаем словарь со статусами
+
+    new_note = create_note()
+    print(new_note)
