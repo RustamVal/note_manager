@@ -1,17 +1,20 @@
 def save_notes_to_file(notes, filename):
-    file = open(filename,mode="w", encoding="utf-8")
-    if file.writable():
-        for note in notes:
-            file.write(f"Имя пользователя: {note["username"]}\n")
-            file.write(f"Заголовок: {note["title"]}\n")
-            file.write(f"Описание: {note["content"]}\n")
-            file.write(f"Статус: {note["status"]}\n")
-            file.write(f"Дата создания: {note["created_date"]}\n")
-            file.write(f"Дедлайн: {note["issue_date"]}\n")
-            file.write(f"---\n")
-    else:
-        print(f"Ошибка сохранения. Файл {filename} не открыт для записи")
-    file.close()
+    try:
+        with open(filename, "w", encoding="utf-8") as file:
+            if file.writable():
+                for note in notes:
+                    file.write(f"Имя пользователя: {note["username"]}\n")
+                    file.write(f"Заголовок: {note["title"]}\n")
+                    file.write(f"Описание: {note["content"]}\n")
+                    file.write(f"Статус: {note["status"]}\n")
+                    file.write(f"Дата создания: {note["created_date"]}\n")
+                    file.write(f"Дедлайн: {note["issue_date"]}\n")
+                    file.write(f"---\n")
+            else:
+                print(f"Ошибка сохранения. Файл {filename} не открыт для записи")
+            file.close()
+    except PermissionError:
+        print(f"Ошибка доступа к файлу {filename}.")
 
 def default_notes():
     in_notes = [
